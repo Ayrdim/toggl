@@ -26,7 +26,7 @@ api_token = "12345678901234567890123456789012:api_token"
 datetime_start = DateTime.new!(~D[2024-03-01], ~T[00:00:00], "Australia/Melbourne")
 datetime_end = DateTime.new!(~D[2024-03-20], ~T[23:59:59], "Australia/Melbourne")
 
-{:ok, time_entries} = Toggl.get_time_entries_for_range(api_token, datetime_start, datetime_end)
+{:ok, time_entries} = Toggl.get_time_entries_for_range({datetime_start, datetime_end}, api_token)
 
-time_entries = Toggl.get_time_entries_for_range!(api_token, datetime_start, datetime_end)
+time_entries = Toggl.get_time_entries_for_range!({datetime_start, datetime_end}, api_token)
 ```

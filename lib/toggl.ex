@@ -2,9 +2,8 @@ defmodule Toggl do
   @toggl_time_entries_url "https://api.track.toggl.com/api/v9/me/time_entries"
 
   def get_time_entries_for_range(
-        api_token,
-        %DateTime{} = datetime_start,
-        %DateTime{} = datetime_end
+        {%DateTime{} = datetime_start, %DateTime{} = datetime_end},
+        api_token
       ) do
     Req.get(
       @toggl_time_entries_url,
@@ -21,9 +20,8 @@ defmodule Toggl do
   defp maybe_get_timers_from_response(error), do: error
 
   def get_time_entries_for_range!(
-        api_token,
-        %DateTime{} = datetime_start,
-        %DateTime{} = datetime_end
+        {%DateTime{} = datetime_start, %DateTime{} = datetime_end},
+        api_token
       ) do
     Req.get!(
       @toggl_time_entries_url,
